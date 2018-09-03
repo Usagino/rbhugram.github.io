@@ -79,7 +79,7 @@ header form .secrch_icon {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 90vh;
+  height: 700px;
 }
 
 .newpost .title {
@@ -145,12 +145,62 @@ header form .secrch_icon {
 }
 
 .newpost_backgreen {
-  position: absolute;
+  position: fixed;
   bottom: 0;
+  z-index: -1;
   content: "";
   background-color: #78CC75;
   width: 100vw;
   height: 350px;
+}
+
+.oldposts {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.oldposts .oldposts_post {
+  margin: -40px 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 400px;
+  width: 100%;
+}
+
+.oldposts .oldposts_post_title h1 {
+  top: 160px;
+  position: absolute;
+  width: 45vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.oldposts .oldposts_post_title hr {
+  width: 50vw;
+  position: absolute;
+  border: solid 2px #F27676;
+}
+
+.oldposts .oldposts_post_image {
+  height: 100%;
+  display: block;
+}
+
+.oldposts .oldposts_post_image img {
+  width: auto;
+  height: 100%;
+}
+
+.oldposts_post:nth-child(odd) .oldposts_post_image {
+  order: -1;
+}
+
+.oldposts_post:nth-child(odd) .oldposts_post_title hr, .oldposts_post:nth-child(odd) .oldposts_post_title h1 {
+  text-align: right;
+  right: 0;
 }
 
 main .container {
@@ -371,6 +421,10 @@ main .container .work:hover > .titlebox {
 
 .sec_container .textbox_section p img {
   display: none;
+}
+
+.sec_container .textbox_section > *:last-child {
+  padding-bottom: 50vh;
 }
 
 .sec_container .imagebox {
