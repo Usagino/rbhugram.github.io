@@ -1,0 +1,236 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta http-equiv="X-UA-Compatible" content="ie=edge"/><link rel="stylesheet" href="stylesheet/reset.css"/><link rel="stylesheet" href="stylesheet/style.css"/><link href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet"/><link href="https://fonts.googleapis.com/earlyaccess/sawarabimincho.css" rel="stylesheet"/><link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet"/><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script><title>Document</title></head><body><header><nav class="hammenu"><div class="hammenu_icon"><div class="hammenu_icon_hover"><span></span><span></span><span></span><span></span><span></span></div></div><div class="hammenu_back"><div class="hammenu_back_screen"><nav class="menucontent"><ul><li>All Posts</li><li>Category</li><li>About</li><li><form method="get" action="http://www.google.co.jp/search" target="_blank"><input class="search_window" value="" type="text"/><input class="secrch_icon" name="btng" value="" type="submit"/><input name="hl" value="ja" type="hidden"/></form></li></ul></nav></div></div></nav><div class="logo"><img src="material/rbhugram.svg"/></div></header><main><div class="hide_top hide"></div><div class="hide_bottom hide"></div><div class="sec_container"><div class="textbox contents_box"><div class="textbox_section"><h1>ES6のクラスについて</h1>
+<hr>
+<h2>オブジェクトの復習</h2>
+<p>クラスについて学習する前に、少し「学習コースⅡ」で学んだ「オブジェクト」について復習しましょう。オブジェクトは下図のように、複数の値をプロパティという名前をつけて管理できるものでした。</p>
+<pre><code class="language-js">const user ={
+  name:&quot;にんじゃわんこ&quot;,
+  age:14
+};
+console.log(user,age);
+</code></pre>
+<p>結果：14</p>
+<h2>オブジェクトと関数(1)</h2>
+<p>オブジェクトの「値」の部分には、関数を用いることもできます。
+下図のようにプロパティの値として関数を記述します。また、その関数を呼び出すには、「<code>定数名.プロパティ名()</code>」とします。プロパティ名の後ろの()を忘れないようにしましょう。
+よく使う書き方なので、この機会に覚えておきましょう。</p>
+<pre><code class="language-js">const 定数名 ={
+  プロパティ名:()=&gt;{
+    処理
+  }
+};
+定数名.プロパティ名();
+</code></pre>
+<h2>オブジェクトと関数(2)</h2>
+<p>具体例を見てみましょう。
+左の図では、オブジェクトの「greet」プロパティに対応する値に関数（アロー関数）を用いています。
+そして、「user.gree()」とすることで関数が実行され、コンソールに表示されています。</p>
+<pre><code class="language-js">const user ={
+  name:&quot;にんじゃわんこ&quot;,
+  greet:()=&gt;{
+    console.log(&quot;こんにちわ!&quot;);
+  }
+};
+user.greet();
+</code></pre>
+<p>結果：こんにちわ！</p>
+<h2>クラス</h2>
+<p>「<code>設計図</code>」のことをJavaScriptでは「<code>クラス</code>」と呼びます。
+図のように「<code>class クラス名</code>」とすることで新しくクラスを用意できます。なお、クラス名は基本的に大文字から始めるようにしましょう。</p>
+<pre><code class="language-js">class User{
+  処理
+}
+</code></pre>
+<h2>インスタンスの生成</h2>
+<p>オブジェクトを生成するための設計図を用意できたので、その設計図から実際にオブジェクトを生成してみましょう。クラスからオブジェクトを生成するには、図のように「<code>new クラス名()</code>」とします。
+クラスから生成したオブジェクトは特別に<code>インスタンス</code>と呼びます。また、Animalクラスの<code>インスタンス</code>をAnimalインスタンスと呼びます。</p>
+<pre><code class="language-js">class Animal {
+
+}
+const animl = new Animal();
+</code></pre>
+<p><img src="https://d2aj9sy12tbpym.cloudfront.net/progate/shared/images/slide/es6/study/4/1532500104498.png" alt=""></p>
+<h2>インスタンスの確認</h2>
+<p>今回はAnimalクラスから生成したAnimalインスタンスをコンソールに出力し、右の図のようにインスタンスが空のオブジェクトであることを確認してみましょう。（{}の前にクラス名のAnimalも表示されますが、気にしないでください。）</p>
+<pre><code class="language-js">class Animal {
+
+}
+const animal = new Animal();
+console.log(animal);
+</code></pre>
+<p>結果：Animal{}</p>
+<p>空のオブジェクトが返ってくる</p>
+<h2>コンストラクタとは</h2>
+<p>クラスには<code>コンストラクタ</code>と呼ばれる機能が用意されています。コンストラクタはインスタンスを生成するときに実行したい処理や設定を追加するための機能です。
+まず、図のように、クラスの中括弧 { } 内に「<code>constructor() { }</code>」と記述します。</p>
+<pre><code class="language-js">class Animal {
+  constructor() {
+
+  }
+}
+</code></pre>
+<h2>コンストラクタの処理</h2>
+<p>図のように、コンストラクタの中には処理を記述することができます。
+ここに書いた処理はインスタンスが生成された直後に実行されます。
+大切なのは、インスタンスごとに毎回実行されるということです。以下の図では2回「new Animal()」としているので、その度にコンストラクタ内の処理が実行されます。</p>
+<pre><code class="language-js">class Animal {
+  constructor() {
+    console.log(&quot;こんにちわ&quot;);
+  }
+}
+const animal1 = new Animal();
+const animal2 = new Animal();
+</code></pre>
+<p>結果：
+こんにちわ
+こんにちわ</p>
+<h2>プロパティを追加する</h2>
+<p>コンストラクタの中で、生成したインスタンスに関する情報を追加してみましょう。
+コンストラクタの中で「<code>this.プロパティ = 値</code>」とすることで、生成されたインスタンスにプロパティと値を追加することができます。</p>
+<pre><code class="language-js">class Animal {
+  constructor() {
+    this.name = &quot;レオ&quot;;
+  }
+}
+</code></pre>
+<h2>インスタンスとプロパティ</h2>
+<p>最初に説明した通り、インスタンスとはオブジェクトですので、コンストラクタの中で追加した値は、「<code>インスタンス.プロパティ</code>」とすることでクラスの外で使用できます。</p>
+<pre><code class="language-js">class Animal {
+  constructor() {
+    this.name = &quot;レオ&quot;;
+  }
+}
+
+const animal = new Animal();
+console.log(animal.name);
+</code></pre>
+<p>結果：
+レオ</p>
+<h2>コンストラクタの引数</h2>
+<p>コンストラクタに引数として値を渡すには、「<code>new クラス名()</code>」の括弧「<code>( )</code>」内に値を追加します。
+以下の図では、文字列「&quot;レオ&quot;」という値が引数として渡され、コンストラクタ内では「name」として使うことができます。</p>
+<pre><code class="language-js">class Animal {
+  constructor(name,age) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+const animal = new Animal(&quot;レオ&quot;,14);
+</code></pre>
+<h2>メソッドとは</h2>
+<p>ここからクラスの重要な機能の1つである「<code>メソッド</code>」について学習していきましょう。
+メソッドとはそのインスタンスの「動作」のようなものです。「名前」や「年齢」などの情報はプロパティで追加したのに対して、メソッドは「挨拶をする」「値を計算する」などの処理のまとまりを表します。</p>
+<p><img src="https://d2aj9sy12tbpym.cloudfront.net/progate/shared/images/slide/es6/study/4/1532937627406.png" alt=""></p>
+<h2>メソッドの使い方</h2>
+<p>メソッドは、そのクラスから生成したインスタンスに対して呼び出します。
+具体的には、以下の図のように「<code>インスタンス.メソッド名()</code>」とすることでそのメソッドを呼び出し、処理を実行することができます。</p>
+<pre><code class="language-js">class Animal {
+  constructor(name,age) {
+    this.name = name;
+    this.age = age;
+  }
+  greet(){
+    console.log(&quot;こんにちわ&quot;);
+  }
+}
+
+const animal = new Animal(&quot;レオ&quot;,14);
+animal.greet();
+</code></pre>
+<p>結果：
+こんにちわ</p>
+<p>greetという名前は任意で決めれる</p>
+<h2>メソッド内で値を扱う</h2>
+<p>では次に、「name」の値を用いて「名前は〇〇です」と出力するメソッドを作成してみましょう。
+メソッド内でインスタンスの値を使用するには、「<code>this</code>」という特殊な値を用いて、「<code>this.プロパティ名</code>」とします。</p>
+<pre><code class="language-js">class Animal {
+  info(){
+    console.log(`名前は${this.age}です`);
+  }
+}
+
+const animal = new Animal(&quot;レオ&quot;,3);
+animal.info();
+</code></pre>
+<h2>メソッド内でメソッドを使う</h2>
+<p>メソッド内で他のメソッドを呼び出すことも可能です。
+以下の図のように、メソッド内で「<code>this.メソッド名()</code>」とすることで、同じクラスの他のメソッドを使うことができます。</p>
+<pre><code class="language-js">class Animal {
+  greet(){
+    console.log(&quot;こんにちわ&quot;);
+  }
+  info(){
+    this.greet();
+  }
+}
+
+const animal = new Animal(&quot;レオ&quot;,3);
+animal.info();
+</code></pre>
+<h2>ファイルの分割</h2>
+<p>コードの量が増えてくると1つのファイルで管理するのが大変になるため、複数のファイルでコードを管理することがあります。
+今回は、メインのプログラムを実行する「script.js」と、Animalクラスを定義する「animal.js」の2つのファイルにコードを分けてみましょう。</p>
+<p><img src="https://d2aj9sy12tbpym.cloudfront.net/progate/shared/images/slide/es6/study/4/1533013999425.png" alt=""></p>
+<hr>
+<p>実は、ただ複数のファイルにコードを分けるだけではうまく動作しません。
+今回の場合、Animalクラスが「script.js」でも使用できるように設定する必要があります。
+次のスライドから、その方法を学習していきましょう。</p>
+<p><img src="https://d2aj9sy12tbpym.cloudfront.net/progate/shared/images/slide/es6/study/4/1532942408114.png" alt=""></p>
+<h2>export</h2>
+<p>まずは「animal.js」内の「Animalクラス」を他のファイルでも使用できるようにしていきます。
+クラスの定義の後で、「<code>export default クラス名</code>」とすることで、そのクラスを他のファイルでも使用することができるようになります。</p>
+<pre><code class="language-js">// animal.js
+class Animal {
+  constructor() {
+
+  }
+}
+
+export default Animal;
+</code></pre>
+<pre><code class="language-js">// script.js
+import Animal from &quot;./animal.js&quot;
+</code></pre>
+<h2>Dogクラスを作ろう</h2>
+<p>ここまで動物に関するデータを扱う「Animalクラス」を作成してきました。ここからは、犬のデータに特化した「Dogクラス」を作成していきましょう。
+新しく作成するクラスが既存のクラスの一種である場合、「継承」という方法を用いることで非常に効率よく作業を進めることができます。</p>
+<p><img src="https://d2aj9sy12tbpym.cloudfront.net/progate/shared/images/slide/es6/study/4/1530170877380.png" alt=""></p>
+<h2>継承とは</h2>
+<p>「継承」とは、すでにあるクラスをもとに、新しくクラスを作成する方法のことです。
+例えば「Animalクラス」から「Dogクラス」を継承すると、「Animalクラス」の全ての機能を引き継いで、「Dogクラス」を作成することができます。</p>
+<p><img src="https://d2aj9sy12tbpym.cloudfront.net/progate/shared/images/slide/es6/study/4/1530171691375.png" alt=""></p>
+<h2>継承の書き方</h2>
+<p>継承を用いてクラスを作成するには「<code>extends</code>」を用います。
+「Animalクラス」を継承して「Dogクラス」を作成するには、図のように「<code>class Dog extends Animal</code>」と書きます。
+また、継承では元となるクラスを<code>親クラス</code>（今回はAnimalクラス）、新しく作成するクラスを<code>子クラス</code>（今回はDogクラス）と呼びます。</p>
+<pre><code class="language-js">import Animal from &quot;./animal.js&quot;
+class Dog extends Animal {
+
+}
+</code></pre>
+<p>Animalクラスを継承している</p>
+<h2>Dogクラスを使う</h2>
+<p>前のページで作成した「Dogクラス」を「script.js」で使用してみましょう。
+そのためには、「script.js」にて「Dogクラス」が読み込めるように設定を追加する必要があります。</p>
+<p><img src="https://d2aj9sy12tbpym.cloudfront.net/progate/shared/images/slide/es6/study/4/1532942345331.png" alt=""></p>
+<h2>使えるメソッド</h2>
+<p>「Dogクラス」は「Animalクラス」のすべての機能を引き継いでいます。そのため、「Dogクラス」内にはまだ何もメソッドは定義されていませんが、「Animalクラス」に定義されている「infoメソッド」などを使用することができます。</p>
+<pre><code class="language-js">// animal.js
+class Animal {
+  info(){
+    this.greet();
+    console.log(`名前は${this.name}です`);
+    console.log(`${this.age}歳です`);
+  }
+}
+</code></pre>
+<pre><code class="language-js">// dog.js
+class Dog extends Animal{
+
+}
+</code></pre>
+<pre><code class="language-js">// script.js
+const dog = new Dog(&quot;レオ&quot;,4);
+dog.info();
+</code></pre>
+</div></div><div class="imagebox contents_box"><div class="imagebox_content"><img src=""/></div></div></div></main></body><script type="text/javascript" src="script/jquery-3.3.1.min.js"></script><script type="text/javascript" src="script/script.js"></script></html>

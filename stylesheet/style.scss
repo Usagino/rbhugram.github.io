@@ -1,0 +1,458 @@
+@import "_variable.scss";
+@import "_animation.scss";
+$throat: 60px;
+$heaven: $throat * 1.2;
+$eath: $throat * 1.728;
+$mouth: $throat * 1.44;
+
+div,
+span {
+  content: "";
+}
+
+body {
+  background-color: #f8f8f8;
+}
+
+html {
+  font-family: "Noto Sans Japanese",'Dosis', sans-serif !important;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Sawarabi Mincho",'Dosis', sans-serif!important;
+  }
+}
+
+.allmargin {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+header {
+  .headerwrap {
+    margin: 50px auto;
+    width: 1050px;
+    height: 40px;
+    position: relative;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  img {
+    height: 100%;
+    width: auto;
+  }
+
+  ul {
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    li {
+      padding: 0 20px;
+    }
+  }
+
+  form {
+    // width: 270px;
+    background: white;
+    box-shadow: 3px 3px #F27676;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+
+    .search_window {
+      border: none;
+      width: 100%;
+    }
+
+    .secrch_icon {
+      background-color: white;
+      background-image: url("../material/serch_icon.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 30px;
+      border: none;
+    }
+  }
+}
+
+.newpost {
+  margin-top: 70px;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 90vh;
+  .title{
+    font-size: 30px;
+  }
+  &_wrap{
+    position: absolute;
+    top: 30px;
+    left: 40vw;
+  }
+  &_symbol{
+    box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+    position: absolute;
+    top: 120px;
+    left: -130px;
+    transform-origin: center;
+    transform: rotate(270deg);
+    z-index: 3;
+    p{
+      white-space: nowrap;
+      display: block;
+      font-size: 30px;
+      padding: 20px 50px;
+      color: white;
+      letter-spacing: 4px;
+      background-color: #F27676;
+    }
+  }
+  &_view {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1000px;
+    height: 500px;
+    background: white;
+    &_sentence{
+
+
+      width: 400px;
+      height: 440px;
+      padding-right: 20px;
+    }
+    &_img{
+
+      padding-left: 20px;
+      height: 440px;
+      width: 400px;
+      img{
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+      }
+    }
+
+  }
+  &_backgreen{
+    position: absolute;
+    bottom: 0;
+
+    content: "";
+    background-color: #78CC75;
+    width: 100vw;
+    height: 350px;
+
+  }
+}
+
+main {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-auto-rows: 1fr;
+    grid-gap: 2px;
+    margin-bottom: $eath;
+
+    .work {
+      height: 250px;
+      width: auto;
+      overflow: hidden;
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+      -o-object-fit: cover;
+      object-fit: cover;
+    }
+
+    .titlebox {
+      color: white;
+      height: 100%;
+      width: 100%;
+      background: white;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      transition: all 0.3s ease;
+      padding: 10px;
+      box-sizing: border-box;
+
+      &_text {
+        height: 80%;
+
+        h1,
+        p {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          text-align: justify;
+          text-justify: auto;
+        }
+
+        p {
+          height: 8em;
+
+          img {}
+        }
+      }
+
+      &_tag {
+        p {
+          padding: 5px 10px;
+          font-size: 10px;
+          border: 1px #f4f4f4 solid;
+          border-radius: 20px;
+          display: inline-block;
+        }
+      }
+    }
+
+    .work:hover > .titlebox {
+      top: 0;
+      transition: all 0.3s ease 0.2s;
+    }
+  }
+}
+
+// ハンバーガーメニュー
+.hammenu {
+  position: relative;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  &_icon {
+    position: fixed;
+    z-index: 100;
+    right: 1.5vw;
+    top: 1.5vw;
+
+    &_hover {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      width: 50px;
+      -webkit-clip-path: polygon(100% 0, 0 0, 100% 100%);
+      clip-path: polygon(100% 0, 0 0, 100% 100%);
+      overflow: hidden;
+      transition: all 700ms;
+
+      span {
+        margin: 4.5px 0;
+        display: block;
+        height: 1px;
+        width: 100%;
+        background: black;
+      }
+    }
+
+    &:hover > .hammenu_icon_hover {
+      transform-origin: center center;
+      transform: rotate(90deg) scale(-1, 1);
+      transition: all 1000ms;
+    }
+  }
+
+  &_back {
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: -1;
+    transition: all 700ms;
+
+    &_screen {
+      position: absolute;
+      right: 0;
+      width: 30%;
+      height: 100vh;
+      display: flex;
+      justify-content: space-around;
+
+      .menucontent {
+        width: 100%;
+        height: 100%;
+        background-color: #fbfbfb;
+        transition: all 300ms ease 0.3s;
+        transform: translateX(100%);
+        ul{
+          font-size: 1.5em;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+        }
+      }
+    }
+  }
+}
+@keyframes hammenu {
+  100% {
+    transform: translateY(0%);
+  }
+}
+// -------------------------------------------
+
+.logo {
+  position: fixed;
+  top: 25px;
+  left: 100px;
+  width: 150px;
+  height: auto;
+  z-index: 2;
+  transition: all 0.5s;
+}
+
+.sec_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: $throat;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  width: calc(100vw - #{$mouth} * 2);
+  height: 100vh;
+  position: relative;
+
+  .contents_box {
+    height: calc(100vh - #{$eath} - #{$heaven});
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .textbox {
+    &_section {
+      display: block;
+      text-align: justify;
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        letter-spacing: 0.1em;
+      }
+
+      h1:not(:first-child),
+      h2:not(:first-child),
+      h3:not(:first-child),
+      h4:not(:first-child),
+      h5:not(:first-child),
+      h6:not(:first-child) {
+        padding-top: 1.2em;
+      }
+
+      pre {
+        width: 100%;
+        white-space: -moz-pre-wrap;
+        white-space: -pre-wrap;
+        white-space: -o-pre-wrap;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+
+      p {
+        padding: 10px 0;
+        line-height: 1.7em;
+
+        img {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .imagebox {
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    &_content {
+      position: fixed;
+      z-index: 999;
+      bottom: 0;
+      top: 0;
+      margin: auto;
+      height: 70vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        transition: all 1s;
+        max-width: calc((100vw - #{$mouth} * 2 - #{$throat} * 2)/2);
+        -o-object-fit: cover;
+        object-fit: cover;
+        box-shadow: 0 12px 10px -6px rgba(0,0,0,.3);
+      }
+    }
+  }
+}
+
+.hide {
+  width: 100vw;
+  position: fixed;
+  background: #f8f8f8;
+  z-index: 1;
+
+  &_top {
+    height: $heaven;
+    top: 0;
+  }
+
+  &_bottom {
+    height: $eath;
+    bottom: 0;
+  }
+}
+
+.wid_long {
+  height: 100%;
+  width: auto;
+}
+
+.hei_long {
+  width: 100%;
+  height: auto;
+}
+@keyframes hide_open {
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.hide_open {
+  animation: hide_open 1s ease 0s forwards;
+}
+
+.hide_anime {
+  opacity: 0;
+}
