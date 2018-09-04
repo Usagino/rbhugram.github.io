@@ -1,3 +1,75 @@
+// -----------------------------------------------
+// ----------------- Vue -------------------------
+// -----------------------------------------------
+let self = this;
+Vue.component('post',{
+  template: '<div class="oldposts_post"><div class="oldposts_post_title"><h1>学校課題作品「積乱雲」</h1><hr/></div><div class="oldposts_post_image"><img src="material/image_7.jpg"/></div></div>'
+})
+
+  // ---menuのクリックイベント----------------------------
+let post = new Vue({
+  el:'#post',
+  data:{}
+})
+
+let hambutton = new Vue({
+  el:'#hambutton',
+  data:{
+    bgcolor: 'transparent',
+    layer0: -1,
+    movement:'translateX(100%)',
+    layer1: -1
+  },
+  methods: {
+    hamburger:function(){
+      this.bgcolor ='rgba(140, 140, 140, 0.5)',
+      this.layer0 = 8000,
+      this.movement = 'translateX(0%)',
+      this.layer1 = 9000
+    },
+    bgScreen:function(){
+      this.bgcolor ='transparent',
+      this.layer0 = -1,
+
+      this.movement = 'translateX(100%)',
+      this.layer1 = -1
+
+    }
+  }
+})
+
+let app = new Vue({
+  el:'#app',
+  data:{
+    scrollY: 0,
+    timer: null
+  },
+  created: function(){
+    //ハンドラを登録
+    window.addEventListener('scroll',this.handleScroll)
+  },
+  beforeDestroy: function(){
+    //ハンドラを解除(コンポーネントやSPAの場合忘れずに)
+    window.removeEventListener('scroll',this.handleScroll)
+  },
+  methods:{
+     // 違和感のない程度に200ms感覚でデータを更新する例
+    handleScroll: function(){
+      if(this.timer === null){
+        this.timer = setTimeout(function(){
+          this.scrollY = window.scrollY
+           //スクロールごとにコンソールに現在の高さを表示
+          console.log(this.scrollY)
+          clearTimeout(this.timer)
+          this.timer = null
+        }.bind(this), 200)
+      }
+    }
+  }
+})
+// -----------------------------------------------
+// ----------------- jQuery ----------------------
+// -----------------------------------------------
 $(function() {
   let imgbox = $('.imagebox_content img');
 
@@ -113,24 +185,6 @@ $(function() {
     $(this).html(txt);
   });
 
-  // ---menuのクリックイベント----------------------------
-  $('.hammenu_icon').click(function() {
-    $('.hammenu_back').css({
-      'background':'rgba(140, 140, 140, 0.5)',
-      'z-index':9999
-    });
-    $('.hammenu_back_screen .menucontent').css('transform', 'translateX(0%)');
-  });
 
-  $('.hammenu_back').click(function() {
-    setTimeout(function(){
-      $('.hammenu_back').css({
-        'background':'rgba(255, 255, 255, 0)',
-        'z-index':-1
-      });
-    },400);
-
-    $('.hammenu_back_screen .menucontent').css('transform', 'translateX(100%)');
-  });
 
 });

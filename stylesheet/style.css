@@ -160,7 +160,7 @@ header form .secrch_icon {
 }
 
 .oldposts .oldposts_post {
-  margin: -40px 0;
+  margin: 50px 0;
   position: relative;
   display: flex;
   align-items: center;
@@ -317,27 +317,30 @@ main .container .work:hover > .titlebox {
   left: 0;
   position: fixed;
   z-index: -1;
-  transition: all 700ms;
+  transition: all 200ms ease;
 }
 
 .hammenu_back_screen {
   position: absolute;
-  right: 0;
-  width: 30%;
+  left: 0;
+  width: 80%;
   height: 100vh;
   display: flex;
   justify-content: space-around;
 }
 
-.hammenu_back_screen .menucontent {
-  width: 100%;
+.hammenu .menucontent {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 20%;
   height: 100%;
   background-color: #fbfbfb;
-  transition: all 300ms ease 0.3s;
+  transition: all 300ms ease;
   transform: translateX(100%);
 }
 
-.hammenu_back_screen .menucontent ul {
+.hammenu .menucontent ul {
   font-size: 1.5em;
   display: flex;
   flex-direction: column;

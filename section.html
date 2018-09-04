@@ -1,4 +1,50 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta http-equiv="X-UA-Compatible" content="ie=edge"/><link rel="stylesheet" href="stylesheet/reset.css"/><link rel="stylesheet" href="stylesheet/style.css"/><link href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet"/><link href="https://fonts.googleapis.com/earlyaccess/sawarabimincho.css" rel="stylesheet"/><link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet"/><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script><title>Document</title></head><body><header><nav class="hammenu"><div class="hammenu_icon"><div class="hammenu_icon_hover"><span></span><span></span><span></span><span></span><span></span></div></div><div class="hammenu_back"><div class="hammenu_back_screen"><nav class="menucontent"><ul><li>All Posts</li><li>Category</li><li>About</li><li><form method="get" action="http://www.google.co.jp/search" target="_blank"><input class="search_window" value="" type="text"/><input class="secrch_icon" name="btng" value="" type="submit"/><input name="hl" value="ja" type="hidden"/></form></li></ul></nav></div></div></nav><div class="logo"><img src="material/rbhugram.svg"/></div></header><main><div class="hide_top hide"></div><div class="hide_bottom hide"></div><div class="sec_container"><div class="textbox contents_box"><div class="textbox_section"><h1>ES6のクラスについて</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link rel="stylesheet" href="stylesheet/reset.css"/>
+    <link rel="stylesheet" href="stylesheet/style.css"/>
+    <link href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/earlyaccess/sawarabimincho.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script>
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <nav class="hammenu" id="hambutton">
+        <div class="hammenu_icon" v-on:click="hamburger">
+          <div class="hammenu_icon_hover"><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+        <div class="hammenu_back" v-bind:style="{backgroundColor:bgcolor, zIndex:layer0}">
+          <div class="hammenu_back_screen" v-on:click="bgScreen"></div>
+          <nav class="menucontent" v-bind:style="{transform:movement, zIndex:layer1}">
+            <ul>
+              <li>All Posts</li>
+              <li>Category</li>
+              <li>About</li>
+              <li>
+                <form method="get" action="http://www.google.co.jp/search" target="_blank">
+                  <input class="search_window" value="" type="text"/>
+                  <input class="secrch_icon" name="btng" value="" type="submit"/>
+                  <input name="hl" value="ja" type="hidden"/>
+                </form>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </nav>
+      <div class="logo"><img src="material/rbhugram.svg"/></div>
+    </header>
+    <main>
+      <div class="hide_top hide"></div>
+      <div class="hide_bottom hide"></div>
+      <div class="sec_container">
+        <div class="textbox contents_box">
+          <div class="textbox_section"><h1>ES6のクラスについて</h1>
 <hr>
 <h2>オブジェクトの復習</h2>
 <p>クラスについて学習する前に、少し「学習コースⅡ」で学んだ「オブジェクト」について復習しましょう。オブジェクトは下図のように、複数の値をプロパティという名前をつけて管理できるものでした。</p>
@@ -233,4 +279,16 @@ class Dog extends Animal{
 const dog = new Dog(&quot;レオ&quot;,4);
 dog.info();
 </code></pre>
-</div></div><div class="imagebox contents_box"><div class="imagebox_content"><img src=""/></div></div></div></main></body><script type="text/javascript" src="script/jquery-3.3.1.min.js"></script><script type="text/javascript" src="script/script.js"></script></html>
+
+          </div>
+        </div>
+        <div class="imagebox contents_box">
+          <div class="imagebox_content"><img src=""/></div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="script/vue.min.js"></script>
+  <script type="text/javascript" src="script/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="script/script.js"></script>
+</html>

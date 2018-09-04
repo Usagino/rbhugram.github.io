@@ -5,6 +5,7 @@ mixin Posts(title,image)
       hr
     div.oldposts_post_image
       img(src=image)
+        
 <!DOCTYPE html>
 html(lang="en")
   include includes/head.pug
@@ -24,17 +25,19 @@ html(lang="en")
               p 一番新しい記事です......
             div.newpost_view_img
               img(src="material/image_12.jpg")
-      div.oldposts
-        +Posts('学校課題作品「積乱雲」','material/image_7.jpg')
-        +Posts('“Architecture Anomalies”ダニエル・アーシャム展示会webサイト制作課題','material/image_2.jpg')
-        +Posts('ROCK IN JAPAN 2018サイトリニューアル課題','material/image_3.jpg')
-        +Posts('学校課題作品「積乱雲」','material/image_4.jpg')
-        +Posts('学校課題作品「積乱雲」','material/image_5.jpg')
+      div.oldposts#post
+        post
+        post
+        post
+        
+      
+        //- +Posts('学校課題作品「積乱雲」','material/image_7.jpg')
+        //- +Posts('“Architecture Anomalies”ダニエル・アーシャム展示会webサイト制作課題','material/image_2.jpg')
+        //- +Posts('ROCK IN JAPAN 2018サイトリニューアル課題','material/image_3.jpg')
+        //- +Posts('学校課題作品「積乱雲」','material/image_4.jpg')
+        //- +Posts('学校課題作品「積乱雲」','material/image_5.jpg')
 
   
         
-          
-          
-      
   include includes/footer.pug
   

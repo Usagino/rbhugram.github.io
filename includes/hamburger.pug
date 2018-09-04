@@ -1,20 +1,21 @@
-nav.hammenu
-  div.hammenu_icon
+nav.hammenu#hambutton
+  div.hammenu_icon(v-on:click="hamburger")
     div.hammenu_icon_hover
       span
       span
       span
       span
       span
-  div.hammenu_back
-    div.hammenu_back_screen
-      nav.menucontent
-        ul
-          li All Posts
-          li Category
-          li About
-          li
-            form(method="get" action="http://www.google.co.jp/search" target="_blank")
-              input(class="search_window"  value="" type="text")
-              input(class="secrch_icon" name="btng" value="" type="submit")
-              input(name="hl" value="ja" type="hidden")
+        
+  div.hammenu_back(v-bind:style="{backgroundColor:bgcolor, zIndex:layer0}")
+    div.hammenu_back_screen(v-on:click="bgScreen")
+    nav.menucontent(v-bind:style="{transform:movement, zIndex:layer1}")
+      ul
+        li All Posts
+        li Category
+        li About
+        li
+          form(method="get" action="http://www.google.co.jp/search" target="_blank")
+            input(class="search_window"  value="" type="text")
+            input(class="secrch_icon" name="btng" value="" type="submit")
+            input(name="hl" value="ja" type="hidden")
