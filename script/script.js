@@ -3,7 +3,8 @@
 // -----------------------------------------------
 let self = this;
 Vue.component('post',{
-  template: '<div class="oldposts_post"><div class="oldposts_post_title"><h1>学校課題作品「積乱雲」</h1><hr/></div><div class="oldposts_post_image"><img src="material/image_7.jpg"/></div></div>'
+  template: '<div class="oldposts_post"><div class="oldposts_post_title"><h1>学校課題作品「積乱雲」</h1><hr/></div><div class="oldposts_post_image"><img src="material/image_7.jpg"/></div></div>',
+  
 })
 
   // ---menuのクリックイベント----------------------------
@@ -67,6 +68,11 @@ let app = new Vue({
     }
   }
 })
+
+let section = new Vue({
+  el:'#section',
+
+})
 // -----------------------------------------------
 // ----------------- jQuery ----------------------
 // -----------------------------------------------
@@ -101,13 +107,6 @@ $(function() {
   }
 
 
-  // ---サムネイルの色をロードごとにランダムな色にする--------------------
-  let work_length = $('.work').length;
-  let rand;
-  for (let i = 0; i <= work_length; i++) {
-    rand = Math.floor(Math.random() * 360);
-    $('.works' + i + ' .titlebox').css('background-color', 'hsl(' + rand + ',100%,50%)');
-  }
 
   // ---リストに画像を格納----------------------------------
 
@@ -184,7 +183,4 @@ $(function() {
     // txt = txt.replace('<br>', ''); //最初の行の「<br>」を削除
     $(this).html(txt);
   });
-
-
-
 });
